@@ -9,13 +9,13 @@
   "categories": [
     "Programming Languages"
   ],
-  "publisher": "windli2018",
+  "publisher": "WindLi",
   "repository": {
     "type": "git",
     "url": "https://github.com/windli2018/vscode-copybara.git"
   },
   "author": {
-    "name": "windli2018"
+    "name": "Wind Li"
   },
   "license": "Apache-2.0",
   "icon": "media/copybara-icon.png",
