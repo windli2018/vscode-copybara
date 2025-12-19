@@ -1,5 +1,5 @@
-starlark.tmLanguage.json is derived from MagicPython.tmLanguage.json,
-which can be found at https://github.com/MagicStack/MagicPython.
+copybara.tmLanguage.json is derived from starlark.tmLanguage.json (vscode-bazel),
+which in turn is derived from MagicPython.tmLanguage.json.
 
 ---
 

@@ -1,39 +1,44 @@
 {
-  "name": "starlark",
-  "displayName": "Starlark",
-  "description": "Syntax highlighting for Starlark",
+  "name": "vscode-copybara",
+  "displayName": "Copybara",
+  "description": "Syntax highlighting and IntelliSense for Copybara configuration files (.sky)",
   "version": "1.0.0",
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.60.0"
   },
   "categories": [
     "Programming Languages"
   ],
-  "publisher": "Didericis",
+  "publisher": "windli2018",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Didericis/vscode-starlark.git"
+    "url": "https://github.com/windli2018/vscode-copybara.git"
   },
   "author": {
-    "name": "Didericis"
+    "name": "windli2018"
   },
   "license": "Apache-2.0",
-  "icon": "media/bazel-logo.png",
+  "icon": "media/copybara-icon.png",
   "contributes": {
     "languages": [{
-      "id": "starlark",
-      "aliases": ["Starlark", "starlark"],
-      "extensions": [".star"],
+      "id": "copybara",
+      "aliases": ["Copybara", "copybara"],
+      "extensions": [".sky"],
+      "filenames": ["copy.bara.sky"],
       "configuration": "./language-configuration.json",
       "icon": {
-        "dark": "./media/bazel-logo.png",
-        "light": "./media/bazel-logo.png"
+        "dark": "./media/copybara-icon.png",
+        "light": "./media/copybara-icon.png"
       }
     }],
     "grammars": [{
-      "language": "starlark",
-      "scopeName": "source.starlark",
-      "path": "./syntaxes/starlark.tmLanguage.json"
+      "language": "copybara",
+      "scopeName": "source.copybara",
+      "path": "./syntaxes/copybara.tmLanguage.json"
+    }],
+    "snippets": [{
+      "language": "copybara",
+      "path": "./snippets/copybara.json"
     }]
   }
 }

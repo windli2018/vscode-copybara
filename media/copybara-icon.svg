@@ -1,0 +1,13 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="#4285f4"/>
+  
+  <!-- Letter C for Copybara -->
+  <text x="64" y="90" font-family="Arial, sans-serif" font-size="72" font-weight="bold" fill="white" text-anchor="middle">C</text>
+  
+  <!-- Small sync arrows to represent code transformation -->
+  <g transform="translate(64, 32)">
+    <path d="M -15,-8 L -8,-8 L -8,-12 L 0,0 L -8,12 L -8,8 L -15,8 Z" fill="white" opacity="0.8"/>
+    <path d="M 15,8 L 8,8 L 8,12 L 0,0 L 8,-12 L 8,-8 L 15,-8 Z" fill="white" opacity="0.8"/>
+  </g>
+</svg>

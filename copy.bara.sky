@@ -1,0 +1,90 @@
+# Copybara configuration example for testing syntax highlighting
+# This file demonstrates typical Copybara workflow configuration
+
+# Define the core workflow
+core.workflow(
+    name = "default",
+    origin = git.origin(
+        url = "https://github.com/example/source-repo.git",
+        ref = "main",
+    ),
+    destination = git.destination(
+        url = "https://github.com/example/dest-repo.git",
+        fetch = "main",
+        push = "main",
+    ),
+    # Define code transformations
+    transformations = [
+        # Copy files from source to destination
+        core.move("src/main", ""),
+        # Replace text in files
+        core.replace(
+            before = "com.example.source",
+            after = "com.example.dest",
+        ),
+        # Add metadata transformations
+        metadata.squash_notes(
+            prefix = "Imported from source repo:\n",
+        ),
+    ],
+    # Set authoring policy
+    authoring = authoring.pass_thru(
+        default = "Copybara Bot <copybara@example.com>"
+    ),
+    # Mode can be SQUASH or ITERATIVE
+    mode = "SQUASH",
+)
+
+# Example feedback migration
+core.feedback(
+    name = "feedback",
+    origin = git.origin(
+        url = "https://github.com/example/dest-repo.git",
+        ref = "main",
+    ),
+    destination = git.destination(
+        url = "https://github.com/example/source-repo.git",
+        fetch = "main",
+        push = "main",
+    ),
+    actions = [
+        # Example action using GitHub API
+        core.action(
+            impl = lambda ctx: ctx.console.info("Processing feedback"),
+        ),
+    ],
+)
+
+# Test various Starlark syntax elements
+def custom_transform(ctx):
+    """Custom transformation function"""
+    files = ctx.list()
+    for file in files:
+        content = ctx.read_path(file)
+        # Use regex for pattern matching
+        pattern = re2.compile(r"OLD_(\w+)")
+        if pattern.matches(content):
+            new_content = pattern.matcher(content).replace_all("NEW_$1")
+            ctx.write_path(file, new_content)
+    return ctx.success()
+
+# Variables and data structures
+config = {
+    "version": "1.0",
+    "enabled": True,
+    "options": ["opt1", "opt2", "opt3"],
+}
+
+# List comprehension and operations
+numbers = [1, 2, 3, 4, 5]
+doubled = [x * 2 for x in numbers if x > 2]
+
+# String operations
+message = "Hello, Copybara!"
+upper_message = message.upper()
+
+# Conditional logic
+if config["enabled"]:
+    print("Configuration is enabled")
+else:
+    print("Configuration is disabled")

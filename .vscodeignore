@@ -1,4 +1,11 @@
 .vscode/**
 .vscode-test/**
 .gitignore
+.qoder/**
 vsc-extension-quickstart.md
+JOURNAL.md
+copybara.sky.reference.md
+COPYBARA_INTELLISENSE.md
+copy.bara.sky
+ICON_README.md
+media/bazel-logo.png

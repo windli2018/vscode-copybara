@@ -1,0 +1,323 @@
+{
+  "Core Workflow": {
+    "prefix": "core.workflow",
+    "body": [
+      "core.workflow(",
+      "    name = \"${1:default}\",",
+      "    origin = ${2:git.origin(",
+      "        url = \"${3:https://github.com/example/source.git}\",",
+      "        ref = \"${4:main}\",",
+      "    )},",
+      "    destination = ${5:git.destination(",
+      "        url = \"${6:https://github.com/example/dest.git}\",",
+      "        fetch = \"${7:main}\",",
+      "        push = \"${8:main}\",",
+      "    )},",
+      "    transformations = [",
+      "        $9",
+      "    ],",
+      "    authoring = ${10:authoring.pass_thru(default = \"Copybara Bot <copybara@example.com>\")},",
+      "    mode = \"${11|SQUASH,ITERATIVE,CHANGE_REQUEST|}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Create a Copybara workflow"
+  },
+  "Git Origin": {
+    "prefix": "git.origin",
+    "body": [
+      "git.origin(",
+      "    url = \"${1:https://github.com/example/repo.git}\",",
+      "    ref = \"${2:main}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Define a Git origin"
+  },
+  "Git Destination": {
+    "prefix": "git.destination",
+    "body": [
+      "git.destination(",
+      "    url = \"${1:https://github.com/example/repo.git}\",",
+      "    fetch = \"${2:main}\",",
+      "    push = \"${3:main}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Define a Git destination"
+  },
+  "GitHub Origin": {
+    "prefix": "git.github_origin",
+    "body": [
+      "git.github_origin(",
+      "    url = \"${1:https://github.com/example/repo.git}\",",
+      "    ref = \"${2:main}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Define a GitHub origin"
+  },
+  "GitHub PR Origin": {
+    "prefix": "git.github_pr_origin",
+    "body": [
+      "git.github_pr_origin(",
+      "    url = \"${1:https://github.com/example/repo}\",",
+      "    branch = \"${2:main}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Define a GitHub Pull Request origin"
+  },
+  "Core Move": {
+    "prefix": "core.move",
+    "body": [
+      "core.move(\"${1:before}\", \"${2:after}\")$0"
+    ],
+    "description": "Move files between directories"
+  },
+  "Core Copy": {
+    "prefix": "core.copy",
+    "body": [
+      "core.copy(",
+      "    before = \"${1:source}\",",
+      "    after = \"${2:destination}\",",
+      "    paths = ${3:glob([\"**\"])},",
+      "    $0",
+      ")"
+    ],
+    "description": "Copy files between directories"
+  },
+  "Core Replace": {
+    "prefix": "core.replace",
+    "body": [
+      "core.replace(",
+      "    before = \"${1:old_text}\",",
+      "    after = \"${2:new_text}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Replace text in files"
+  },
+  "Core Remove": {
+    "prefix": "core.remove",
+    "body": [
+      "core.remove(glob([\"${1:**/*.txt}\"]))"
+    ],
+    "description": "Remove files matching a glob pattern"
+  },
+  "Authoring Pass Through": {
+    "prefix": "authoring.pass_thru",
+    "body": [
+      "authoring.pass_thru(default = \"${1:Default Author <author@example.com>}\")$0"
+    ],
+    "description": "Use origin author as author in destination"
+  },
+  "Authoring Overwrite": {
+    "prefix": "authoring.overwrite",
+    "body": [
+      "authoring.overwrite(\"${1:Author Name <author@example.com>}\")$0"
+    ],
+    "description": "Overwrite all commits with a default author"
+  },
+  "Authoring Allowed": {
+    "prefix": "authoring.allowed",
+    "body": [
+      "authoring.allowed(",
+      "    default = \"${1:Default Author <author@example.com>}\",",
+      "    allowlist = [",
+      "        \"${2:user1@example.com}\",",
+      "        \"${3:user2@example.com}\",",
+      "    ],",
+      ")"
+    ],
+    "description": "Allow only specific authors"
+  },
+  "Metadata Squash Notes": {
+    "prefix": "metadata.squash_notes",
+    "body": [
+      "metadata.squash_notes(",
+      "    prefix = \"${1:Imported from source:\\n}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Squash change messages into a single message"
+  },
+  "Metadata Map Author": {
+    "prefix": "metadata.map_author",
+    "body": [
+      "metadata.map_author({",
+      "    \"${1:old@example.com}\": \"${2:new@example.com}\",",
+      "})$0"
+    ],
+    "description": "Map author emails"
+  },
+  "Metadata Add Header": {
+    "prefix": "metadata.add_header",
+    "body": [
+      "metadata.add_header(\"${1:Header text}\\n\")$0"
+    ],
+    "description": "Add a header to commit messages"
+  },
+  "Metadata Expose Label": {
+    "prefix": "metadata.expose_label",
+    "body": [
+      "metadata.expose_label(\"${1:LABEL_NAME}\")$0"
+    ],
+    "description": "Expose a label from commit message"
+  },
+  "Core Feedback": {
+    "prefix": "core.feedback",
+    "body": [
+      "core.feedback(",
+      "    name = \"${1:feedback}\",",
+      "    origin = ${2:git.origin(",
+      "        url = \"${3:https://github.com/example/dest.git}\",",
+      "        ref = \"${4:main}\",",
+      "    )},",
+      "    destination = ${5:git.destination(",
+      "        url = \"${6:https://github.com/example/source.git}\",",
+      "        fetch = \"${7:main}\",",
+      "        push = \"${8:main}\",",
+      "    )},",
+      "    actions = [",
+      "        $9",
+      "    ],",
+      ")"
+    ],
+    "description": "Create a feedback migration"
+  },
+  "Core Transform": {
+    "prefix": "core.transform",
+    "body": [
+      "core.transform([",
+      "    $1",
+      "])$0"
+    ],
+    "description": "Group transformations"
+  },
+  "Glob Pattern": {
+    "prefix": "glob",
+    "body": [
+      "glob([\"${1:**/*}\"])$0"
+    ],
+    "description": "Create a glob pattern"
+  },
+  "Git Mirror": {
+    "prefix": "git.mirror",
+    "body": [
+      "git.mirror(",
+      "    name = \"${1:default}\",",
+      "    origin = \"${2:https://github.com/example/source.git}\",",
+      "    destination = \"${3:https://github.com/example/dest.git}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Create a Git mirror migration"
+  },
+  "GitHub API": {
+    "prefix": "git.github_api",
+    "body": [
+      "git.github_api(",
+      "    url = \"${1:https://github.com}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Create GitHub API object"
+  },
+  "Gerrit API": {
+    "prefix": "git.gerrit_api",
+    "body": [
+      "git.gerrit_api(",
+      "    url = \"${1:https://gerrit.example.com}\",",
+      "    $0",
+      ")"
+    ],
+    "description": "Create Gerrit API object"
+  },
+  "Patch Apply": {
+    "prefix": "patch.apply",
+    "body": [
+      "patch.apply(",
+      "    patches = glob([\"${1:patches/*.patch}\"]),",
+      "    $0",
+      ")"
+    ],
+    "description": "Apply patch files"
+  },
+  "Core Filter Replace": {
+    "prefix": "core.filter_replace",
+    "body": [
+      "core.filter_replace(",
+      "    regex = \"${1:pattern}\",",
+      "    mapping = {",
+      "        \"${2:group1}\": \"${3:replacement1}\",",
+      "    },",
+      "    $0",
+      ")"
+    ],
+    "description": "Filter and replace using regex groups"
+  },
+  "Core Verify Match": {
+    "prefix": "core.verify_match",
+    "body": [
+      "core.verify_match(",
+      "    regex = \"${1:pattern}\",",
+      "    paths = glob([\"${2:**/*}\"]),",
+      "    $0",
+      ")"
+    ],
+    "description": "Verify files match a regex pattern"
+  },
+  "Buildozer Modify": {
+    "prefix": "buildozer.modify",
+    "body": [
+      "buildozer.modify(",
+      "    target = \"${1:package:target}\",",
+      "    commands = [",
+      "        \"${2:add deps :foo}\",",
+      "    ],",
+      ")"
+    ],
+    "description": "Modify BUILD file targets"
+  },
+  "Console Info": {
+    "prefix": "console.info",
+    "body": [
+      "console.info(\"${1:message}\")$0"
+    ],
+    "description": "Print info message to console"
+  },
+  "Console Warn": {
+    "prefix": "console.warn",
+    "body": [
+      "console.warn(\"${1:message}\")$0"
+    ],
+    "description": "Print warning message to console"
+  },
+  "Console Error": {
+    "prefix": "console.error",
+    "body": [
+      "console.error(\"${1:message}\")$0"
+    ],
+    "description": "Print error message to console"
+  },
+  "Custom Transform Function": {
+    "prefix": "def transform",
+    "body": [
+      "def ${1:custom_transform}(ctx):",
+      "    \"\"\"${2:Custom transformation function}\"\"\"",
+      "    # Get list of files",
+      "    files = ctx.list()",
+      "    ",
+      "    for file in files:",
+      "        content = ctx.read_path(file)",
+      "        # Process content",
+      "        ${3:# TODO: Add transformation logic}",
+      "        ctx.write_path(file, content)",
+      "    ",
+      "    return ctx.success()",
+      "$0"
+    ],
+    "description": "Create a custom transformation function"
+  }
+}
