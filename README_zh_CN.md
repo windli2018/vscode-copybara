@@ -1,5 +1,7 @@
 # vscode-copybara
 
+[English](README.md) | [简体中文](README_zh_CN.md)
+
 用于 [Copybara](https://github.com/google/copybara) 的 VSCode 扩展 - 一个用于在代码仓库之间转换和移动代码的工具。
 
 本扩展为 Copybara 配置文件（`.sky` 文件）提供语法高亮、代码片段和智能提示支持。

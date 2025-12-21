@@ -1,5 +1,7 @@
 # vscode-copybara
 
+[English](README.md) | [简体中文](README_zh_CN.md)
+
 VSCode extension for [Copybara](https://github.com/google/copybara) - A tool for transforming and moving code between repositories.
 
 This extension provides syntax highlighting, code snippets, and IntelliSense support for Copybara configuration files (`.sky` files).
