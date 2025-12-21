@@ -25,9 +25,10 @@ This extension provides syntax highlighting, code snippets, and IntelliSense sup
 
 ## Installation
 
-1. Install from VSCode Marketplace (search for "Copybara")
-2. Or install from VSIX file
-3. Open any `.sky` file to activate the extension
+1. Install from VSCode Marketplace search for "Copybara")
+   [vscode-copybara](https://marketplace.visualstudio.com/items?itemName=WindLi.vscode-copybara)
+3. Or install from VSIX file
+4. Open any `.sky` file to activate the extension
 
 ## Supported File Types
 
@@ -78,7 +79,7 @@ core.workflow(
 - [Copybara Official Documentation](https://github.com/google/copybara)
 - [Copybara Reference Guide](https://github.com/google/copybara/blob/master/docs/reference.md)
 - [Example Configurations](https://github.com/google/copybara/tree/master/docs/examples.md)
-
+- [vscode-copybara](https://marketplace.visualstudio.com/items?itemName=WindLi.vscode-copybara)
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
